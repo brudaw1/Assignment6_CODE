@@ -4,7 +4,7 @@
 
 # Barnes & Noble Shopping System
 
-![Build Status](https://github.com/brudaw1/assignment6/actions/workflows/SE333_CI.yml/badge.svg)
+![Build Status](https://github.com/brudaw1/Assignment_6/actions/workflows/SE333_CI.yml/badge.svg)
 
 ## Overview
 This project is a Java-based implementation of a **Barnes & Noble** book purchasing system. It includes:
@@ -68,4 +68,5 @@ To run tests manually on your machine:
 1. **Run Static Analysis (Checkstyle)**
    ```sh
    mvn checkstyle:checkstyle
+# Assignment_6
 # Assignment_6

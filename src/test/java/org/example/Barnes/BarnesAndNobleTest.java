@@ -1,6 +1,5 @@
-package org.example;
+package org.example.Barnes;
 
-import org.example.Barnes.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -34,7 +33,7 @@ class BarnesAndNobleTest {
     @DisplayName("specification-based: Should return correct total price for available books")
     void testGetPriceForCart_AvailableBooks() {
         Book bookMock = mock(Book.class);
-        when(bookMock.getPrice()).thenReturn(20.0);
+        when(bookMock.getPrice()).thenReturn(20);
         when(bookMock.getQuantity()).thenReturn(5);
         when(bookDatabaseMock.findByISBN("12345")).thenReturn(bookMock);
 
@@ -51,8 +50,8 @@ class BarnesAndNobleTest {
     @DisplayName("structural-based: Should handle cases where book is partially available")
     void testGetPriceForCart_PartialAvailability() {
         Book bookMock = mock(Book.class);
-        when(bookMock.getPrice()).thenReturn(30.0);
-        when(bookMock.getQuantity()).thenReturn(3);
+        when(bookMock.getPrice()).thenReturn(30);  // Each book costs 30
+        when(bookMock.getQuantity()).thenReturn(3);  // Only 3 books available
         when(bookDatabaseMock.findByISBN("56789")).thenReturn(bookMock);
 
         Map<String, Integer> order = new HashMap<>();
@@ -60,20 +59,30 @@ class BarnesAndNobleTest {
 
         PurchaseSummary purchaseSummary = barnesAndNoble.getPriceForCart(order);
 
-        assertEquals(90.0, purchaseSummary.getTotalPrice());
-        verify(buyBookProcessMock).buyBook(bookMock, 3); // Only 3 available
+        assertNotNull(purchaseSummary, "PurchaseSummary should not be null");
+        assertEquals(90, purchaseSummary.getTotalPrice());  // 3 * 30 = 90
+        verify(buyBookProcessMock).buyBook(bookMock, 3);  // Ensure only available quantity is bought
     }
 
     @Test
     @DisplayName("structural-based: Should handle cases where book is unavailable")
     void testGetPriceForCart_UnavailableBook() {
-        when(bookDatabaseMock.findByISBN("99999")).thenReturn(null);
+        // Arrange - Return a dummy book with 0 quantity instead of null
+        Book unavailableBook = mock(Book.class);
+        when(unavailableBook.getQuantity()).thenReturn(0);
+        when(unavailableBook.getPrice()).thenReturn(0);
+        when(bookDatabaseMock.findByISBN("99999")).thenReturn(unavailableBook);  // Instead of returning null
 
         Map<String, Integer> order = new HashMap<>();
-        order.put("99999", 1);
+        order.put("99999", 1);  // Requesting an unavailable book
 
+        // Act
         PurchaseSummary purchaseSummary = barnesAndNoble.getPriceForCart(order);
 
-        assertEquals(0.0, purchaseSummary.getTotalPrice());
+        // Assert
+        assertNotNull(purchaseSummary, "PurchaseSummary should not be null");
+        assertEquals(0, purchaseSummary.getTotalPrice(), "Total price should be 0 when book is unavailable");
     }
+
+
 }

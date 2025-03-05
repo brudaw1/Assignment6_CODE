@@ -1,4 +1,4 @@
-package org.example;
+package org.example.Amazon;
 
 import org.example.Amazon.Amazon;
 import org.example.Amazon.Cost.PriceRule;

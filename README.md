@@ -68,5 +68,4 @@ To run tests manually on your machine:
 1. **Run Static Analysis (Checkstyle)**
    ```sh
    mvn checkstyle:checkstyle
-# Assignment_6
-# Assignment_6
+

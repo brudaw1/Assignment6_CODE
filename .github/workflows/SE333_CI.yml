@@ -33,7 +33,7 @@ jobs:
 
       - name: Upload Checkstyle Result
         ##TODO
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: checkstyle-result
           path: target/checkstyle-result.xml
@@ -44,7 +44,7 @@ jobs:
 
       - name: Jacoco Report
         ##TODO
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: jacoco-report
           path: target/site/jacoco/index.html

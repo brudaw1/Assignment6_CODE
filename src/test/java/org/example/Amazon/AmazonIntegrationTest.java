@@ -1,3 +1,5 @@
+//added Part3 Amazon Tests
+
 package org.example.Amazon;
 
 import org.example.Amazon.Cost.PriceRule;

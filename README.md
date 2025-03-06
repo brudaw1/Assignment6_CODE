@@ -2,7 +2,7 @@
 
 ## Overview
 
-### 🛒 Barnes & Noble Shopping System
+###  Barnes & Noble Shopping System
 ![Build Status](https://github.com/brudaw1/Assignment6_code/actions/workflows/SE333_CI.yml/badge.svg)
 
 This project is a **Java-based** implementation of a **Barnes & Noble** book purchasing system. It includes:
@@ -18,7 +18,7 @@ This part focuses on testing the `BarnesAndNoble` project using two approaches:
 - **Specification-based Testing**: Tests based on provided system requirements.
 - **Structural-based Testing**: Tests based on internal code structure.
 
-### 🛠 Testing Tools
+###  Testing Tools
 - **JUnit 5** – For writing and executing test cases.
 - **Mockito** – For mocking dependencies in unit tests.
 - **AssertJ** – For enhanced assertions and readability.
@@ -68,7 +68,7 @@ This section expands the test suite by adding **unit tests** and **integration t
     -  Resets the database before each test for consistency.
 - **Unit Testing** – Focuses on individual components using test doubles (mocks/stubs).
 
-### 🏗️ Test Organization
+###  Test Organization
 - **`AmazonUnitTest.java`** – Contains unit tests for Amazon functionalities.
     -  **Specification-based tests** – Validates expected behaviors.
     -  **Structural-based tests** – Ensures correct internal interactions.
@@ -104,5 +104,3 @@ mvn test
 ```sh
 mvn jacoco:report
 ```
-
-
